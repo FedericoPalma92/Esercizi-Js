@@ -2,15 +2,37 @@
 <html>
 <head>
     <title>Calcolatrice</title>
+    <style>
+        button {
+            margin: 2px;
+        }
+    </style>
+        
+    </style>
 </head>
 <body>
     <div>
         <button onclick="calcolo = calcolo + '1'">1</button>
         <button onclick="calcolo = calcolo + '2'">2</button>
         <button onclick="calcolo = calcolo + '3'">3</button>
+        <button onclick="calcolo = calcolo + ' + '">+</button>
     </div>
     <div>
-        <button onclick="calcolo = calcolo + ' + '">+</button>
+        <button onclick="calcolo = calcolo + '4'">4</button>
+        <button onclick="calcolo = calcolo + '5'">5</button>
+        <button onclick="calcolo = calcolo + '6'">6</button>
+        <button onclick="calcolo = calcolo + ' - '">+</button>
+    </div>
+    <div>
+        <button onclick="calcolo = calcolo + '7'">7</button>
+        <button onclick="calcolo = calcolo + '8'">8</button>
+        <button onclick="calcolo = calcolo + '9'">9</button>
+        <button onclick="calcolo = calcolo + ' * '">X</button>
+    </div>
+    <div>
+        <button onclick="calcolo = calcolo + '0'">0</button>
+        <button onclick="calcolo = calcolo + ' / '">-</button>
+        <button onclick="calcolo = calcolo + '.'">-</button>
         <button onclick="console.log('Risultato:', eval(calcolo)); calcolo='';">=</button>
     </div>
     <script>
