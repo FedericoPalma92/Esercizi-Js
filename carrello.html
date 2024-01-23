@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Carrello</title>
+    </head>
+
+    <body>
+        <p>Quantità carrello</p>
+        <button onclick="console.log('quantità: ',carrello)">Mostra Quantità</button>
+        <button onclick="carrello++;console.log('quantità: ',carrello)">Aggiungi Carrello</button>
+        <button onclick="carrello=carrello+2;console.log('quantità: ',carrello)">+2</button>
+        <button onclick="carrello=carrello+3;console.log('quantità: ',carrello)">+3</button>
+        <button onclick="carrello--;console.log('quantità: ',carrello)">Rimuovi dal Carrello</button>
+        <button onclick="carrello=carrello-2;console.log('quantità: ',carrello)">-2</button>
+        <button onclick="carrello=carrello-3;console.log('quantità: ',carrello)">-3</button>
+        <button onclick="carrello=0">Svuota carrello</button>
+        
+        <script>
+            let carrello=0;
+        </script>
+    </body>
+</html>

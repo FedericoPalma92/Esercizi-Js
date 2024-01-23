@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcolatrice</title>
+</head>
+<body>
+    <div>
+        <button onclick="calcolo = calcolo + '1'">1</button>
+        <button onclick="calcolo = calcolo + '2'">2</button>
+        <button onclick="calcolo = calcolo + '3'">3</button>
+    </div>
+    <div>
+        <button onclick="calcolo = calcolo + ' + '">+</button>
+        <button onclick="console.log('Risultato:', eval(calcolo))">=</button>
+    </div>
+    <script>
+        let calcolo = '';
+    </script>
+</body>
+</html>
