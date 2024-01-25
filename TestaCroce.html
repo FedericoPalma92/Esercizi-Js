@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testa o Croce</title>
+</head>
+<body>
+    <button onclick="testa()">Testa</button>
+    <button onclick="croce()">Croce</button>
+
+    <script>
+        
+        function testa(){
+            var randomNumber = Math.random();
+            var result = randomNumber < 0.5 ? "Hai indovinato" : "Non hai indovinato";
+            alert(result);
+        };
+
+        function croce(){
+            var randomNumber = Math.random();
+            var result = randomNumber < 0.5 ? "Non hai indovinato" : "Hai indovinato";
+            alert(result);
+        };
+    </script>
+</body>
+</html>
