@@ -6,7 +6,12 @@
 <body>
     <script>
         let eta = 5;
-        (eta<6 || eta>65) ? console.log("Hai diritto allo sconto") : console.log("Paghi il biglietto intero");
+        
+        let giorno = (new Date()).getDay();
+        let festivo = false;
+        // domenica=0,lunedì=1,martedì=2,mercoledì=3,giovedì=4,venerdì=5,sabato=6
+        giorno == 0 || giorno == 6 ? festivo = true : festivo = false;
+        ((eta<6 || eta>65) && !festivo) ? console.log("Hai diritto allo sconto") : console.log("Paghi il biglietto intero");
     </script>
 </body>
 </html>
