@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sasso, Carta, Forbice</title>
+</head>
+<body>
+    <h1>Sasso, Carta, Forbice</h1>
+    <p>Scegli una delle opzioni:</p>
+    <button onclick="gioca('sasso')">Sasso</button>
+    <button onclick="gioca('carta')">Carta</button>
+    <button onclick="gioca('forbice')">Forbice</button>
+    <p id="result"></p>
+    
+    <script>
+        function gioca(playerChoice) {
+            var choices = ["sasso", "carta", "forbice"];
+            var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            var result = "";
+
+            if (playerChoice === computerChoice) {
+                result = "Pareggio!";
+            } else if (
+                (playerChoice === "sasso" && computerChoice === "forbice") ||
+                (playerChoice === "carta" && computerChoice === "sasso") ||
+                (playerChoice === "forbice" && computerChoice === "carta")
+            ) {
+                result = "Hai vinto!";
+            } else {
+                result = "Hai perso!";
+            }
+
+            alert("Hai scelto " + playerChoice + ", il computer ha scelto " + computerChoice + ". " + result);
+        }
+    </script>
+</body>
+</html>

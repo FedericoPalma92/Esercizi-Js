@@ -9,16 +9,45 @@
     <body>
         <p>Quantità carrello</p>
         <button onclick="console.log('quantità: ',carrello)">Mostra Quantità</button>
-        <button onclick="carrello++;console.log('quantità: ',carrello)">Aggiungi Carrello</button>
-        <button onclick="carrello=carrello+2;console.log('quantità: ',carrello)">+2</button>
-        <button onclick="carrello=carrello+3;console.log('quantità: ',carrello)">+3</button>
-        <button onclick="carrello--;console.log('quantità: ',carrello)">Rimuovi dal Carrello</button>
-        <button onclick="carrello=carrello-2;console.log('quantità: ',carrello)">-2</button>
-        <button onclick="carrello=carrello-3;console.log('quantità: ',carrello)">-3</button>
-        <button onclick="carrello=0">Svuota carrello</button>
+        <button onclick="addQuantity(1)">Aggiungi Carrello</button>
+        <button onclick="addQuantity(2)">+2</button>
+        <button onclick="addQuantity(3)">+3</button>
+        <button onclick="removeQuantity(1)">Rimuovi dal Carrello</button>
+        <button onclick="removeQuantity(2)">-2</button>
+        <button onclick="removeQuantity(3)">-3</button>
+        <button onclick="emptyCart()">Svuota carrello</button>
         
         <script>
             let carrello=0;
+            function addQuantity(num){
+                if(carrello<10){
+                    carrello=carrello+num;
+                    console.log("Quantità",carrello);
+                }
+                else{
+                    console.log("Carrello pieno");
+                }
+            }
+            function removeQuantity(num){
+                if(carrello>0){
+                    carrello=carrello-num;
+                    console.log("Quantità",carrello);
+                }
+                else{
+                    console.log("Carrello vuoto");
+                }
+                
+            }
+            function emptyCart(){
+                if(carrello!=0){
+                    carrello=0;
+                    console.log("Quantità",carrello);
+                }
+                else{
+                    console.log("Carrello già vuoto");
+                }
+            }
+
         </script>
     </body>
 </html>

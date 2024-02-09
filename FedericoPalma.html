@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prova Intermedia</title>
+    
+    <style>
+        .mt-2 {
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Prova Intermedia</h1>
+    <input type="text" id="inputText">
+    <button onclick="checkThreshold()">Conferma</button>
+    <br>
+    <button onclick="resetThreshold()" class="mt-2">Reset</button>
+    <p id="result"></p>
+    <script>
+        //Creo una variabile threshold per la lunghezza da controllare
+        var threshold = 10;
+
+        //prendo gli elementi dal localstorage se presenti
+        var storageValue = localStorage.getItem("count");
+
+        //inizializzo l'oggetto count con i valori di default
+        var count = {
+            aboveThreshold: storageValue != undefined ? JSON.parse(storageValue).aboveThreshold : 0,
+            belowThreshold: storageValue != undefined ? JSON.parse(storageValue).belowThreshold : 0
+        };
+        //stampo i valori nel paragrafo result
+        printResult();
+        //funzione per resettare i valori
+        function resetThreshold() {
+            count.aboveThreshold = 0;
+            count.belowThreshold = 0;
+            localStorage.removeItem("count");
+            printResult();
+        }
+        //funzione per controllare la lunghezza della stringa
+        function checkThreshold() {
+            var inputText = document.getElementById("inputText").value;
+            inputText = inputText.trim();
+
+            
+            if (inputText.length > threshold) {
+                count.aboveThreshold++;
+            } else {
+                count.belowThreshold++;
+            }
+
+            localStorage.setItem("count", JSON.stringify(count));
+            printResult();
+        }
+        //funzione per stampare i valori nel paragrafo result
+        function printResult() {
+            var result = document.getElementById("result");
+            result.innerHTML = "Sopra la soglia: " + count.aboveThreshold + "<br>Sotto la soglia: " + count.belowThreshold;
+        }
+
+        //funzione per controllare se è stato premuto il tasto invio
+        document.getElementById("inputText").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                checkThreshold();
+            }
+        });
+    </script>
+</body>
+
+</html>

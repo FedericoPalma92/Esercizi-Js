@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Text Box</title>
+  
+</head>
+<body>
+  <input type="text" id="nameInput">
+  <button onclick="printName()">Invio</button>
+  <p id="output"></p>
+  <script>
+    function printName() {
+      var textBox = document.getElementById("nameInput");
+      var name = textBox.value;
+      var output = document.getElementById("output");
+      output.textContent = "Il tuo nome è: " + name;
+    }
+    
+    var textBox = document.getElementById("nameInput");
+    textBox.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        printName();
+      }
+    });
+
+  </script>
+</body>
+</html>

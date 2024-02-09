@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <title>Sasso carta forbice</title>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <p>Sasso Carta Forbice</p>
+
+        <button onclick="
+
+            play('sasso');
+
+        ">Sasso</button>
+
+        <button onclick="
+
+            play('carta');
+
+        ">Carta</button>
+
+        <button onclick="
+
+            play('forbice');
+            
+        ">Forbice</button>
+
+        <button onclick="
+            punteggio.vittoria = 0;
+            punteggio.sconfitta = 0;
+            punteggio.pareggio = 0;
+            localStorage.removeItem('punteggio');
+        ">Reset</button>
+
+        <script>
+
+            const punteggio = JSON.parse(localStorage.getItem('punteggio')) ||
+            {
+                vittoria: 0,
+                sconfitta: 0,
+                pareggio: 0
+            };
+
+            function play(mossaGiocatore) {
+                const mossaComputer = sceltaMossaComputer();
+
+                let risultato = '';
+
+                if (mossaGiocatore === 'sasso') {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Pareggio.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Sconfitta.';
+                    } else {
+                        risultato = 'Vittoria.';
+                    }
+                } else if (mossaGiocatore === 'carta') {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Vittoria.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Pareggio.';
+                    } else {
+                        risultato = 'Sconfitta.';
+                    }
+                } else {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Sconfitta.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Vittoria.';
+                    } else {
+                        risultato = 'Pareggio.';
+                    }
+                }
+
+                if (risultato === 'Vittoria.') {
+                    punteggio.vittoria++;
+                } else if (risultato === 'Pareggio.') {
+                    punteggio.pareggio++;
+                } else {
+                    punteggio.sconfitta++;
+                }
+
+                localStorage.setItem('punteggio', JSON.stringify(punteggio));
+
+                alert(`Hai scelto ${mossaGiocatore}. Il Computer ha scelto ${mossaComputer}. ${risultato}
+Vittorie: ${punteggio.vittoria}, Sconfitte: ${punteggio.sconfitta}, Pareggi: ${punteggio.pareggio}.`);
+            };
+
+            function sceltaMossaComputer() { // raccomandazione --> nome di azione nel nome della fun
+                const numeroCasuale = Math.random();
+                let mossaComputer = '';
+
+                if (numeroCasuale >= 0 && numeroCasuale < 1/3) {
+                    mossaComputer = 'sasso';
+                } else if (numeroCasuale >= 1/3 && numeroCasuale < 2/3) {
+                    mossaComputer = 'carta';
+                } else {
+                    mossaComputer = 'forbice';
+                }
+                //console.log(mossaComputer);
+                return mossaComputer;
+            }
+
+        </script>
+    </body>
+</html>

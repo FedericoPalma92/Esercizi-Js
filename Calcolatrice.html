@@ -2,41 +2,87 @@
 <html>
 <head>
     <title>Calcolatrice</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
         button {
-            margin: 2px;
+            margin: 4px;
+            min-width: 34px;
+            min-height: 34px;
         }
     </style>
         
-    </style>
 </head>
 <body>
-    <div>
-        <button onclick="calcolo = calcolo + '1'">1</button>
-        <button onclick="calcolo = calcolo + '2'">2</button>
-        <button onclick="calcolo = calcolo + '3'">3</button>
-        <button onclick="calcolo = calcolo + ' + '">+</button>
-    </div>
-    <div>
-        <button onclick="calcolo = calcolo + '4'">4</button>
-        <button onclick="calcolo = calcolo + '5'">5</button>
-        <button onclick="calcolo = calcolo + '6'">6</button>
-        <button onclick="calcolo = calcolo + ' - '">+</button>
-    </div>
-    <div>
-        <button onclick="calcolo = calcolo + '7'">7</button>
-        <button onclick="calcolo = calcolo + '8'">8</button>
-        <button onclick="calcolo = calcolo + '9'">9</button>
-        <button onclick="calcolo = calcolo + ' * '">X</button>
-    </div>
-    <div>
-        <button onclick="calcolo = calcolo + '0'">0</button>
-        <button onclick="calcolo = calcolo + ' / '">-</button>
-        <button onclick="calcolo = calcolo + '.'">-</button>
-        <button onclick="console.log('Risultato:', eval(calcolo)); calcolo='';">=</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Calcolatrice</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="border bg-light p-2 d-inline-block">
+                    <div>
+                        <p id="result" class="bg-secondary text-right text-light px-2">0</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="concat('1')">1</button>
+                        <button class="btn btn-secondary" onclick="concat('2')">2</button>
+                        <button class="btn btn-secondary" onclick="concat('3')">3</button>
+                        <button class="btn btn-secondary" onclick="concat(' + ')">+</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="concat('4')">4</button>
+                        <button class="btn btn-secondary" onclick="concat('5')">5</button>
+                        <button class="btn btn-secondary" onclick="concat('6')">6</button>
+                        <button class="btn btn-secondary" onclick="concat(' - ')">-</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="concat('7')">7</button>
+                        <button class="btn btn-secondary" onclick="concat('8')">8</button>
+                        <button class="btn btn-secondary" onclick="concat('9')">9</button>
+                        <button class="btn btn-secondary" onclick="concat(' * ')">X</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="concat('0')">0</button>
+                        <button class="btn btn-secondary" onclick="concat(' / ')">/</button>
+                        <button class="btn btn-secondary" onclick="concat('.')">.</button>
+                        <button class="btn btn-secondary" onclick="calcola()">=</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="reset()">C</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
     <script>
-        let calcolo = '';
+        var calcolo = '';
+        var Risultato = localStorage.getItem("risultato")|| 0;
+
+        function concat(value){
+            calcolo = calcolo + value;
+            localStorage.setItem("calcolo", calcolo);
+            document.getElementById("result").textContent = calcolo;
+        }
+
+        function reset(){
+            calcolo = '';
+            document.getElementById("result").textContent = '0';
+            localStorage.removeItem("risultato");
+            localStorage.removeItem("calcolo");
+        }
+
+        function calcola(){
+            Risultato = eval(calcolo);
+            localStorage.setItem("risultato", Risultato);
+            document.getElementById("result").textContent = Risultato;
+            calcolo = '';
+            localStorage.removeItem("calcolo");
+        }
     </script>
+    
 </body>
 </html>
