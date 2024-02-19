@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestione Prenotazioni Studio Medico</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png">
+            <h1>Studio Medico Medivita</h1>
+        </div>
+        
+    </header>
+    <main>
+        <div class="form-container">
+            <!--Campo nome-->
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="name" name="nome">
+            </div>
+            <!--Campo codice fiscale-->
+            <div class="form-group">
+                <label for="codiceFiscale">Codice Fiscale:</label>
+                <input type="text" id="taxCode" name="codiceFiscale">
+            </div>
+            <!--Campo data-->
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="date" name="data">
+            </div>
+            <!--Pulsante prenota-->
+            <div class="form-group">
+                <button onclick="addReservation()">Prenota</button>
+            </div>
+        </div>
+        <div class="reservation-list">
+
+        </div>
+    </main>
+    
+</body>
+</html>

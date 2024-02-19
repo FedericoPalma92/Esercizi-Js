@@ -1,0 +1,13 @@
+.is-toggle {
+    background-color: #000;
+    color: white;
+}
+
+button{
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}

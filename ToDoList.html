@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insert Value into Array</title>
+    <script src="ToDoList.js"></script>
+    <style>
+        .btn{
+            border: none;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-success{
+            background-color: green;
+            color: white;
+        }
+
+        .btn-remove{
+            background-color: red;
+            color: white;
+        }
+        .btn-reset{
+            background-color: blue;
+            color: white;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li{
+            padding-bottom: 10px;
+        }
+        input{
+            padding: 10px;
+        }
+        .list{
+            padding: 10px;
+        }
+        .list-item{
+            display: grid;
+            grid-template-columns: 200px 200px 150px 150px;
+            column-gap: 10px;
+            row-gap: 10px;
+        }
+
+        .input-grid{
+            display: grid;
+            grid-template-columns: 200px 200px 150px 150px;
+            row-gap: 10px;
+            column-gap: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <div class="input-grid">
+        <input type="text" id="inputValue" placeholder="Inserisci il valore">
+        <input type="date" id="inputDate" placeholder="Inserisci la data">
+    
+        <button class="btn btn-success" onclick="insertValue()">Aggiungi</button>
+        <button class="btn btn-reset" onclick="reset()">Reset</button>
+    </div>
+    
+    <div class="list">
+
+    </div>
+</body>
+</html>

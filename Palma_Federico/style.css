@@ -1,0 +1,117 @@
+/*Creo un body che si prende l'intera altezza della finestra, senza pagging e margini e con una grandezza del font di 18px per consentire alle persone adulte di leggere meglio*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+/* Setto la dimensione del font per i campi di input, i pulsanti, le select e i textarea a 18 per consentire alle persone adulte di leggere meglio*/
+input,button,select,textarea {
+    font-size: 18px;
+}
+/*Stile per l'header della mia pagina*/
+header {
+    background-color: #fff;
+    padding: 20px;
+    text-align: left;
+    border-bottom: 5px solid #1C75AC;
+}
+/* Stile per affiancare il logo e il titolo del mio studio medico */
+.logo {
+    display: flex;
+    align-items: center;
+}
+/* Setto la dimensione massima del logo a 150px e aggiungo un margine di 20px per separare il logo dal bordo della finestra*/
+header .logo img {
+    max-height: 150px;
+    margin: 20px;
+}
+/* Setto il flex a 1 per far si che il main si prenda tutto lo spazio disponibile e setto il padding per spaziare il contenuto*/
+main {
+    flex: 1;
+    padding: 20px;
+}
+/*Classe di utility per settare il padding bottom agli elementi*/
+.pb-2{
+    padding-bottom: 1rem;
+}
+.form-container{
+    max-width: 50%;
+    border: 1px solid #6c6c6c;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+/*Classe di utility per settare il margin bottom ai contenitori dei campi*/
+.form-group:not(:last-child){
+    margin-bottom: 1rem;
+}
+/*Classe di utility per settare lo stile delle label*/
+.form-group label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+/*Classe di utility per settare lo stile degli input*/
+.form-group input{
+    padding: 0.75rem;
+    border: 1px solid #6c6c6c;
+    border-radius: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+/*Classe di utility per settare lo stile dei pulsanti, setto il background a verde per aiutare le persone adulte a vedere meglio*/
+.form-group button{
+    padding: 0.75rem;
+    border: 1px solid #28a745;
+    border-radius: 0.25rem;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+/* classe di utility per settare lo stile della tabella */
+.table{
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+/* classe di utility per settare lo stile delle celle */
+.table th, .table td{
+    padding: 0.75rem;
+    vertical-align: top;
+    border: 1px solid #6c6c6c;
+}
+
+/* classe di utility per settare lo sfondo delle righe dispari a grigio ed aiutare le persone nella visualizzazione dei risultati*/
+.table tr:not(:first-child):nth-child(odd){
+    background-color: #dfdfdf;
+}
+/* classe di utility per settare lo stile dell'intestazione della tabella*/
+.table th{
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    background: #1C75AC;
+    border: 1px solid #fff;
+}
+/* classe di utility per settare il bordo sinistro della prima cella dell'intestazione uguale a quello delle successive righe*/
+.table th:first-child{
+    border-left: 1px solid #6c6c6c;
+}
+/* classe di utility per settare il bordo destro dell'ultima cella dell'intestazione uguale a quello delle successive righe*/
+.table th:last-child{
+    border-right: 1px solid #6c6c6c;
+}
+
+/* classe di utility lo stile del pulsante di cancellazione, lo sfondo sarà rosso per aiutare le persone adulte a vedere meglio*/
+.btn-remove{
+    padding: 0.75rem;
+    border: 1px solid #dc3545;
+    border-radius: 0.25rem;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+}

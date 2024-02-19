@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        .active {
+            background-color: #000;
+            color: #fff;
+        }
+        .btn-iscriviti{
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>Bottone di iscrizione</p>
+
+    <button onclick="
+        iscriviti();
+    " class="js-button-iscrizione btn-iscriviti">Iscriviti</button>
+
+    <p>Calcolatore di spese di spedizione</p>
+
+    <input placeholder="Costo dell'ordine" class="js-costo" onkeydown="
+        leggiInput(event);
+    ">
+
+    <button onclick="
+        calcolaTotale();
+    ">Calcola</button>
+
+    <p class="js-costo-totale"></p>
+
+    <script>
+        function iscriviti() {
+            const buttonElement = document.querySelector('.js-button-iscrizione');
+            buttonElement.classList.toggle('active');
+            if (buttonElement.innerHTML === 'Iscriviti') {
+                buttonElement.innerHTML = 'Iscritto';
+            } else {
+                buttonElement.innerHTML = 'Iscriviti';
+            }
+        }
+
+        function calcolaTotale () {
+            const inputElement = document.querySelector('.js-costo');
+            let costo = Number(inputElement.value); //casting
+            if (costo < 40) {
+                costo += 10;
+            }
+            document.querySelector('.js-costo-totale').innerHTML = `€${costo}`;
+            inputElement.value = '';
+        }
+
+        function leggiInput (event) {
+            if (event.key === 'Enter') {
+                calcolaTotale();
+            }
+        }
+    </script>
+</body>
+</html>

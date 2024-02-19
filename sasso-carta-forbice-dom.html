@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <title>Sasso carta forbice</title>
+    <head>
+        <style>
+            .choice {
+                display: inline-block;
+                margin: 10px;
+                padding: 15px;
+                border: 1.5px solid #000;
+                border-radius: 100%
+            }
+            .choice img{
+                width: 50px;
+                height: 50px;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            .print-result img{
+                width: 50px;
+                height: 50px;
+                margin: 0 5px;
+            }
+
+            .print-result img:first-child{
+                transform: rotate(90deg) scaleX(-1);
+            }
+            .print-result img:last-child{
+                transform: rotate(-90deg) ;
+            }
+        </style>
+    </head>
+    <body>
+
+        <p class="bold">Sasso Carta Forbice</p>
+
+        <a class="choice" onclick="
+
+            play('sasso');
+
+        "><img src="./sasso.png"></a>
+
+        <a class="choice" onclick="
+
+            play('carta');
+
+        "><img src="./carta.png" alt=""></a>
+
+        <a class="choice" onclick="
+
+            play('forbice');
+            
+        "><img src="./forbice.png"></a>
+
+        <p class="js-risultato bold"></p>
+        <p class="js-mossa print-result"></p>
+
+        <p class="js-punteggio"></p>
+
+        <button onclick="
+            resetPunteggio();
+        ">Reset</button>
+
+        <script>
+
+            const punteggio = JSON.parse(localStorage.getItem('punteggio')) ||
+            {
+                vittoria: 0,
+                sconfitta: 0,
+                pareggio: 0
+            };
+
+            
+
+            aggiornaPunteggio();
+
+            function resetPunteggio() {
+                punteggio.vittoria = 0;
+                punteggio.sconfitta = 0;
+                punteggio.pareggio = 0;
+                localStorage.removeItem('punteggio');
+                aggiornaPunteggio();
+
+                //ripulisco il risultato
+                document.querySelector('.js-risultato').innerHTML = '';
+                //ripulisco le mosse scelte
+                document.querySelector('.js-mossa').innerHTML = '';
+            }
+
+            function play(mossaGiocatore) {
+                const mossaComputer = sceltaMossaComputer();
+
+                let risultato = '';
+
+                if (mossaGiocatore === 'sasso') {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Pareggio.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Sconfitta.';
+                    } else {
+                        risultato = 'Vittoria.';
+                    }
+                } else if (mossaGiocatore === 'carta') {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Vittoria.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Pareggio.';
+                    } else {
+                        risultato = 'Sconfitta.';
+                    }
+                } else {
+                    if (mossaComputer === 'sasso') {
+                        risultato = 'Sconfitta.';
+                    } else if (mossaComputer === 'carta') {
+                        risultato = 'Vittoria.';
+                    } else {
+                        risultato = 'Pareggio.';
+                    }
+                }
+
+                if (risultato === 'Vittoria.') {
+                    punteggio.vittoria++;
+                } else if (risultato === 'Pareggio.') {
+                    punteggio.pareggio++;
+                } else {
+                    punteggio.sconfitta++;
+                }
+
+                localStorage.setItem('punteggio', JSON.stringify(punteggio));
+
+                aggiornaPunteggio();
+                let imgMossaGiocatore="";
+                switch(mossaGiocatore){
+                    case 'sasso':
+                        imgMossaGiocatore = '<img src="./sasso.png">';
+                        break;
+                    case 'carta':
+                        imgMossaGiocatore = '<img src="./carta.png">';
+                        break;
+                    case 'forbice':
+                        imgMossaGiocatore = '<img src="./forbice.png">';
+                        break;
+                }
+                let imgMossaComputer="";
+                switch(mossaComputer){
+                    case 'sasso':
+                        imgMossaComputer = '<img src="./sasso.png">';
+                        break;
+                    case 'carta':
+                        imgMossaComputer = '<img src="./carta.png">';
+                        break;
+                    case 'forbice':
+                        imgMossaComputer = '<img src="./forbice.png">';
+                        break;
+                }
+
+                // inserisce il risultato
+                document.querySelector('.js-risultato').innerHTML = risultato;
+
+                // inserisce le mosse scelte
+                document.querySelector('.js-mossa').innerHTML =
+                    `Tu ${imgMossaGiocatore} ${imgMossaComputer} Computer`;
+
+                //alert(`Hai scelto ${mossaGiocatore}. Il Computer ha scelto ${mossaComputer}. ${risultato}
+//Vittorie: ${punteggio.vittoria}, Sconfitte: ${punteggio.sconfitta}, Pareggi: ${punteggio.pareggio}.`);
+            };
+
+            function sceltaMossaComputer() { // raccomandazione --> nome di azione nel nome della fun
+                const numeroCasuale = Math.random();
+                let mossaComputer = '';
+
+                if (numeroCasuale >= 0 && numeroCasuale < 1/3) {
+                    mossaComputer = 'sasso';
+                } else if (numeroCasuale >= 1/3 && numeroCasuale < 2/3) {
+                    mossaComputer = 'carta';
+                } else {
+                    mossaComputer = 'forbice';
+                }
+                //console.log(mossaComputer);
+                return mossaComputer;
+            }
+
+            function aggiornaPunteggio () {
+                document.querySelector('.js-punteggio').innerHTML = 
+                    `Vittorie: ${punteggio.vittoria}, 
+                    Sconfitte: ${punteggio.sconfitta}, 
+                    Pareggi: ${punteggio.pareggio}`;
+            }
+
+        </script>
+    </body>
+</html>
